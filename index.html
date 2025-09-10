@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSit - Premium Hygiene Protection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            overflow-x: hidden;
+            background-color: #fdfbf7;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #e74c3c;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: 0.2px;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -6px;
+            left: 50%;
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white !important;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fd 50%, #fdf2e9 100%);
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -200px;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(231, 76, 60, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.2rem;
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            color: #2c3e50;
+            letter-spacing: -1px;
+        }
+
+        .hero-content .highlight {
+            color: #e74c3c;
+            position: relative;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #5a6c7d;
+            margin-bottom: 40px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 18px 36px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 30px rgba(231, 76, 60, 0.3);
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.3px;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(231, 76, 60, 0.4);
+        }
+
+        .secondary-btn {
+            color: #2c3e50;
+            padding: 18px 36px;
+            border: 2px solid #e1e8ed;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .secondary-btn:hover {
+            border-color: #e74c3c;
+            color: #e74c3c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .hero-image {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-radius: 30px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg at 50% 50%, transparent, rgba(231, 76, 60, 0.05), transparent, rgba(52, 152, 219, 0.05), transparent);
+            animation: rotate 20s linear infinite;
+        }
+
+        .hero-image-content {
+            font-size: 8rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Stats */
+        .stats {
+            background: white;
+            padding: 80px 0;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 8px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .stat-item p {
+            color: #5a6c7d;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #fdfbf7 0%, #f8f9fa 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-subtitle {
+            color: #e74c3c;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: #5a6c7d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 48px 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        .benefit-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+            border-color: rgba(231, 76, 60, 0.2);
+        }
+
+        .benefit-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 32px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 16px;
+        }
+
+        .benefit-card p {
+            color: #5a6c7d;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Use Cases */
+        .use-cases {
+            padding: 120px 0;
+            background: white;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 80px;
+        }
+
+        .use-case {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 40px 32px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .use-case:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .use-case-icon {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .use-case h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .use-case p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        /* Product Showcase */
+        .product-showcase {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #fdfbf7 0%, #f8f9fa 100%);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+            margin-top: 80px;
+        }
+
+        .product-image {
+            background: white;
+            border-radius: 32px;
+            height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(231, 76, 60, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .product-image:hover::before {
+            opacity: 1;
+        }
+
+        .product-visual {
+            font-size: 12rem;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.1));
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-image:hover .product-visual {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .product-details h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .product-features {
+            list-style: none;
+            margin: 40px 0;
+        }
+
+        .product-features li {
+            padding: 16px 0;
+            font-size: 1.1rem;
+            color: #5a6c7d;
+            position: relative;
+            padding-left: 36px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: 700;
+            font-size: 1.3rem;
+            width: 24px;
+            height: 24px;
+            background: rgba(39, 174, 96, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .product-features li:hover {
+            color: #2c3e50;
+            padding-left: 40px;
+        }
+
+        .price-section {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 32px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 8px;
+        }
+
+        .price-old {
+            font-size: 1.4rem;
+            color: #95a5a6;
+            text-decoration: line-through;
+            margin-left: 16px;
+        }
+
+        .discount-badge {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 120px 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .testimonial {
+            background: linear-gradient(135deg, #fdfbf7, #f8f9fa);
+            padding: 48px 40px;
+            border-radius: 24px;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            font-size: 4rem;
+            color: rgba(231, 76, 60, 0.2);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #5a6c7d;
+            margin-bottom: 32px;
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            color: #95a5a6;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+        }
+
+        .footer-section a {
+            color: #95a5a6;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a:hover {
+            color: #e74c3c;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 40px;
+            text-align: center;
+            color: #95a5a6;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .hero-grid, .product-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* Floating Elements */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 10px 40px rgba(231, 76, 60, 0.4);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+        }
+
+        .floating-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(231, 76, 60, 0.5);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">SafeSit</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#product">Product</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" class="nav-cta" onclick="buyNow()">Shop Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Premium <span class="highlight">Hygiene Protection</span> for Modern Life</h1>
+                    <p>Experience uncompromised safety with SafeSit's advanced toilet seat covers. Engineered for travelers, professionals, and families who demand the highest standards of hygiene protection.</p>
+                    <div class="hero-actions">
+                        <a href="#product" class="primary-btn">Explore Products</a>
+                        <a href="#benefits" class="secondary-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-image-content">🛡️</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>100K+</h3>
+                    <p>Satisfied Customers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>99.9%</h3>
+                    <p>Germ Protection</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Countries Served</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4.9★</h3>
+                    <p>Customer Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Advanced Protection</p>
+                <h2 class="section-title">Why SafeSit Leads the Industry</h2>
+                <p class="section-description">Our scientifically engineered toilet seat covers provide unmatched protection against harmful pathogens while maintaining environmental responsibility.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🔬</div>
+                    <h3>Medical-Grade Protection</h3>
+                    <p>Laboratory-tested barrier technology that eliminates 99.9% of harmful bacteria, viruses, and pathogens commonly found on public toilet surfaces.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">✈️</div>
+                    <h3>Travel-Optimized Design</h3>
+                    <p>Ultra-compact packaging perfect for business trips, vacations, and daily commutes. Fits seamlessly in purses, briefcases, and carry-on luggage.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🌱</div>
+                    <h3>Eco-Conscious Materials</h3>
+                    <p>Made from biodegradable, sustainable materials that break down naturally without harming the environment. Completely flushable and septic-safe.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Instant Deployment</h3>
+                    <p>Revolutionary quick-setup design allows for effortless application in under 3 seconds. No complicated unfolding or positioning required.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">💧</div>
+                    <h3>Complete Barrier Shield</h3>
+                    <p>Advanced waterproof membrane creates an impenetrable barrier against moisture, contaminants, and surface-borne infections.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">👨‍⚕️</div>
+                    <h3>Dermatologist Approved</h3>
+                    <p>Clinically tested and approved by leading dermatologists. Hypoallergenic, non-toxic, and safe for sensitive skin and all age groups.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-cases" id="use-cases">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Essential Locations</p>
+                <h2 class="section-title">Where SafeSit Makes the Difference</h2>
+                <p class="section-description">From high-traffic transit hubs to everyday public facilities, SafeSit provides essential protection wherever hygiene is a concern.</p>
+            </div>
+            <div class="use-cases-grid">
+                <div class="use-case fade-in">
+                    <div class="use-case-icon">✈️</div>
+                    <h3>International Airports</h3>
+                    <p>Global travel hubs with diverse hygiene standards</p>
+                </div>
+                <div class="use-case fade-in">
+                    <div class="use-case-icon">🏪</div>
+                    <h3>Shopping Centers</h3>
+                    <p>Busy retail environments with continuous foot traffic</p>
+                </div>
+                <div class="use-case fade-in">
+                    <div class="use-case-icon">🏨</div>
+                    <h3>Hotels & Resorts</h3>
+                    <p>Unfamiliar accommodations with varying cleanliness</p>
+                </div>
+                <div class="use-case fade-in">
+                    <div class="use-case-icon">⛽</div>
+                    <h3>Highway Rest Stops</h3>
+                    <p>Essential protection during long-distance travel</p>
+                </div>
+                <div class="use-case fade-in">
+                    <div class="use-case-icon">🏢</div>
+                    <h3>Corporate Offices</h3>
+                    <p>Shared workplace facilities requiring daily protection</p>
+                </div>
+                <div class="use-case fade-in">
+                    <div class="use-case-icon">🎭</div>
+                    <h3>Entertainment Venues</h3>
+                    <p>Theaters, stadiums, and concert halls</p>
+                </div>
+                <div class="use-case fade-in">
+                    <div class="use-case-icon">🍽️</div>
+                    <h3>Restaurants</h3>
+                    <p>Dining establishments prioritizing customer safety</p>
+                </div>
+                <div class="use-case fade-in">
+                    <div class="use-case-icon">🚄</div>
+                    <h3>Railway Stations</h3>
+                    <p>High-volume, often inadequately maintained facilities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-showcase" id="product">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Premium Product</p>
+                <h2 class="section-title">SafeSit Professional Series</h2>
+                <p class="section-description">Our flagship product combines advanced materials science with thoughtful design to deliver uncompromising protection and convenience.</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-image fade-in">
+                    <div class="product-visual">📦</div>
+                </div>
+                <div class="product-details fade-in">
+                    <h3>Premium Protection Pack</h3>
+                    <ul class="product-features">
+                        <li>50 individually sealed toilet seat covers</li>
+                        <li>Medical-grade biodegradable materials</li>
+                        <li>Universal fit for all standard toilet seats</li>
+                        <li>Waterproof antimicrobial barrier</li>
+                        <li>Travel-optimized compact packaging</li>
+                        <li>Dermatologically tested and clinically approved</li>
+                        <li>3-second quick deployment system</li>
+                        <li>Completely flushable and eco-friendly</li>
+                        <li>Extended shelf life of 3+ years</li>
+                        <li>Hypoallergenic and fragrance-free</li>
+                    </ul>
+                    <div class="price-section">
+                        <div class="price">₹399 <span class="price-old">₹699</span></div>
+                        <div class="discount-badge">Limited Time: 43% OFF</div>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#" class="primary-btn" onclick="buyNow()">Order Now</a>
+                        <a href="#testimonials" class="secondary-btn">Read Reviews</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Customer Stories</p>
+                <h2 class="section-title">Trusted by Thousands Worldwide</h2>
+                <p class="section-description">Hear from our satisfied customers who have made SafeSit an essential part of their hygiene routine.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial fade-in">
+                    <p class="testimonial-text">SafeSit has completely transformed my business travel experience. As a consultant who travels 3-4 days a week, these seat covers have become absolutely essential. The quality is exceptional and the peace of mind is invaluable.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PS</div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Management Consultant</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial fade-in">
+                    <p class="testimonial-text">As a mother traveling with young children, SafeSit gives me the confidence that my family is protected. The covers are so easy to use that even my 8-year-old can apply them independently. Highly recommend to all parents.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AM</div>
+                        <div class="author-info">
+                            <h4>Anjali Mehta</h4>
+                            <p>Working Mother</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial fade-in">
+                    <p class="testimonial-text">I've been using SafeSit for over a year during my frequent train journeys for work. The product quality is consistently excellent, and I appreciate the environmental consciousness of the biodegradable materials.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RK</div>
+                        <div class="author-info">
+                            <h4>Rajesh Kumar</h4>
+                            <p>Regional Sales Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial fade-in">
+                    <p class="testimonial-text">The convenience factor is unmatched. I keep a pack in my car, office bag, and travel luggage. SafeSit has become as essential as carrying hand sanitizer - it's just part of my daily hygiene routine now.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SK</div>
+                        <div class="author-info">
+                            <h4>Sneha Kapoor</h4>
+                            <p>Healthcare Professional</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial fade-in">
+                    <p class="testimonial-text">After experiencing food poisoning from a questionable restroom during international travel, I discovered SafeSit. It's now the first item I pack for any trip. The protection and peace of mind are worth every penny.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">VG</div>
+                        <div class="author-info">
+                            <h4>Vikram Gupta</h4>
+                            <p>Travel Blogger</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial fade-in">
+                    <p class="testimonial-text">I was skeptical at first, but SafeSit has exceeded all expectations. The quality is superior to any other product I've tried, and the compact packaging makes it perfect for my daily commute and gym visits.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">NT</div>
+                        <div class="author-info">
+                            <h4>Neha Tiwari</h4>
+                            <p>Fitness Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>SafeSit</h3>
+                    <p>Leading the revolution in personal hygiene protection with innovative, sustainable solutions for modern life. Your health and safety are our highest priorities.</p>
+                    <div class="hero-actions">
+                        <a href="#" class="primary-btn" onclick="buyNow()">Shop Now</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Care</h4>
+                    <a href="mailto:care@safesit.com">care@safesit.com</a>
+                    <a href="tel:+919876543210">+91 98765 43210</a>
+                    <a href="#">Live Chat Support</a>
+                    <a href="#">Mon-Sat: 9AM-7PM IST</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#product">Products</a>
+                    <a href="#benefits">Benefits</a>
+                    <a href="#">Bulk Orders</a>
+                    <a href="#">Shipping Info</a>
+                    <a href="#">Return Policy</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Sustainability</a>
+                    <a href="#">Press Kit</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SafeSit. All rights reserved. Protecting health, one seat at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="floating-cta" onclick="buyNow()">🛒 Order Now</a>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced buy now functionality
+        function buyNow() {
+            const orderDetails = `
+🛡️ SAFESIT - PREMIUM PROTECTION PACK
+
+📦 Product: 50 Toilet Seat Covers
+💰 Special Price: ₹399 (43% OFF)
+✅ Free Shipping Across India
+🚚 Express Delivery Available
+
+📱 ORDER NOW:
+• WhatsApp: +91 98765 43210
+• Email: orders@safesit.com
+• Website: www.safesit.com
+
+🎁 LIMITED TIME BENEFITS:
+• 30-Day Money Back Guarantee
+• Buy 2 Get 1 Free Offer
+• Bulk Discounts Available
+• Corporate Orders Welcome
+
+💳 Payment Options:
+• Credit/Debit Cards
+• UPI & Digital Wallets
+• Net Banking
+• Cash on Delivery
+
+🔒 Secure & Safe Ordering
+🌱 Eco-Friendly Packaging
+⭐ 4.9/5 Customer Rating
+
+Order now and experience premium hygiene protection!`;
+
+            alert(orderDetails);
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background on scroll
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+            
+            // Hide/show floating CTA based on scroll direction
+            const floatingCTA = document.querySelector('.floating-cta');
+            if (currentScrollY > lastScrollY && currentScrollY > 500) {
+                floatingCTA.style.transform = 'translateY(100px)';
+            } else {
+                floatingCTA.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+            document.body.style.transition = 'opacity 0.5s ease';
+        });
+
+        // Enhanced use case hover effects
+        document.querySelectorAll('.use-case').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Product image interaction
+        const productImage = document.querySelector('.product-image');
+        if (productImage) {
+            productImage.addEventListener('mousemove', (e) => {
+                const rect = productImage.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+                
+                const rotateX = (y - 0.5) * 10;
+                const rotateY = (x - 0.5) * -10;
+                
+                productImage.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            productImage.addEventListener('mouseleave', () => {
+                productImage.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            });
+        }
+    </script>
+</body>
+</html>in">
+                    <div class="use-case-icon">🚄</div>
+                    <h3>Railway Stations</h3>
+                    <p>High-volume, often inadequately maintained facilities</p>
+                </div>
+                <div class="use-case fade-
